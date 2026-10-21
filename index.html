@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vespera Pathogen Database</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="nature-decoration nature-left">
+    <div class="stem"></div>
+
+    <span class="leaf leaf-1"></span>
+    <span class="leaf leaf-2"></span>
+    <span class="leaf leaf-3"></span>
+    <span class="leaf leaf-4"></span>
+    <span class="leaf leaf-5"></span>
+</div>
+<div class="nature-decoration nature-right">
+    <div class="fern-stem"></div>
+
+    <span class="fern-leaf fern-1"></span>
+    <span class="fern-leaf fern-2"></span>
+    <span class="fern-leaf fern-3"></span>
+    <span class="fern-leaf fern-4"></span>
+    <span class="fern-leaf fern-5"></span>
+    <span class="fern-leaf fern-6"></span>
+</div>
+     <!-- SCREEN 1: LOGIN -->
+<!-- SCREEN 1: LOGIN -->
+
+<div class="container" id="loginScreen">
+
+<header class="site-header">
+
+    <div class="viwr-brand">
+        <div class="viwr-logo">VIWR</div>
+
+        <div class="viwr-name">
+            VESPERA INSTITUTE FOR<br>
+            WILDLIFE RESEARCH
+        </div>
+    </div>
+
+    <nav class="site-nav">
+        <span>ABOUT</span>
+        <span>RESEARCH</span>
+        <span>CONSERVATION</span>
+        <span>WILDLIFE HEALTH</span>
+    </nav>
+
+</header>
+
+  <main class="landing-content">
+
+    <section class="welcome-section">
+
+        <p class="section-label">
+            WILDLIFE HEALTH & CONSERVATION
+        </p>
+
+        <h1>
+            Understanding disease
+            across ecosystems.
+        </h1>
+
+        <p class="welcome-text">
+            VIWR researchers study the connections between
+            wildlife health, environmental change, and
+            emerging infectious disease.
+        </p>
+
+        <p class="welcome-text">
+            Through field research and disease ecology,
+            we support evidence-based wildlife conservation
+            and healthier ecosystems.
+        </p>
+
+    </section>
+
+
+    <section class="portal-card">
+
+        <p class="section-label">
+            SECURE RESEARCH ACCESS
+        </p>
+
+        <h2>PATHOGEN SEQUENCE DATABASE</h2>
+
+        <p>
+            Authorized VIWR personnel may access
+            active disease investigation records.
+        </p>
+
+        <h3>IDENTIFICATION REQUIRED</h3>
+
+        <div class="id-entry">
+
+            <span>VIWR-</span>
+
+            <input
+                type="text"
+                id="identificationNumber"
+                placeholder="0000"
+                maxlength="4"
+                inputmode="numeric"
+            >
+
+        </div>
+
+        <button id="verifyButton">
+            VERIFY IDENTIFICATION
+        </button>
+
+        <p id="loginStatus">
+    ACCESS DENIED — IDENTIFICATION NUMBER NOT RECOGNIZED
+</p>
+
+    </section>
+
+</main>
+</div>
+
+    <!-- SCREEN 2: SEQUENCE ENTRY -->
+<div class="container" id="sequenceScreen">
+<h1>VESPERA INSTITUTE FOR WILDLIFE RESEARCH</h1>
+
+    <h2>Center For Wildlife Disease & Conservation</h2>
+
+    <hr>
+
+    <h2>PATHOGEN SEQUENCE DATABASE</h2>
+
+    <p>SECURE ACCESS PORTAL</p>
+
+    <hr>
+
+   <h3>VIRAL SEQUENCES RECOVERED</h3>
+
+<p>
+    Viral RNA was recovered from three host-associated samples.
+    Enter the recovered nucleotide sequences below for comparative analysis.
+</p>
+
+<div class="sample-card">
+    <h3>BAT-01</h3>
+    <p>Bat-associated viral RNA sample</p>
+<input type="text" id="batSequence" placeholder="Enter recovered nucleotide sequence">
+</div>
+
+<div class="sample-card">
+<h3>PIG-04</h3>
+<p>Swine-associated viral RNA sample</p>
+<input type="text" id="pigSequence" placeholder="Enter recovered nucleotide sequence">
+</div>
+
+<div class="sample-card">
+<h3>HUM-07</h3>
+<p>Human clinical viral RNA sample</p>
+<input type="text" id="humanSequence" placeholder="Enter recovered nucleotide sequence">
+</div>
+
+<br><br>
+
+<button id="submitSequences">
+    SUBMIT SEQUENCES FOR ANALYSIS
+</button>
+</div>
+
+
+    <!-- SCREEN 3: PHYLOGENETIC ANALYSIS -->
+<div class="container" id="phylogenyScreen">
+
+    <h1>VESPERA INSTITUTE FOR WILDLIFE RESEARCH</h1>
+    <h2>Center For Wildlife Disease & Conservation</h2>
+
+    <hr>
+
+    <h2>PHYLOGENETIC ANALYSIS</h2>
+    <p>Comparative Viral Sequence Analysis</p>
+
+    <hr>
+
+    <h3>ANALYSIS REQUIRED</h3>
+
+   <p>
+    The recovered viral sequences have been verified.
+
+    Compare BAT-01 and PIG-04 to the human reference sequence.
+    Click each nucleotide (DNA letter: A, T, G, C) that differs from the human sequence,
+    then analyze the sequence differences.
+</p>
+<!-- VERIFIED SEQUENCES -->
+
+        <div class="sequence-reference">
+
+    <h3>HUM-07 — REFERENCE SEQUENCE</h3>
+    <div class="dna-sequence" id="humanComparison"></div>
+
+    <h3>BAT-01</h3>
+    <div class="sequence-row">
+        <div class="dna-sequence" id="batComparison"></div>
+        <div class="change-count">
+            CHANGES: <span id="batCount">0</span>
+        </div>
+    </div>
+
+    <h3>PIG-04</h3>
+    <div class="sequence-row">
+        <div class="dna-sequence" id="pigComparison"></div>
+        <div class="change-count">
+            CHANGES: <span id="pigCount">0</span>
+        </div>
+    </div>
+
+    <br>
+
+    <button id="analyzeDifferences">
+        ANALYZE SEQUENCE DIFFERENCES
+    </button>
+
+    <p id="comparisonResult"></p>
+
+</div>
+
+<!-- PHYLOGENY ACTIVITY -->
+
+<div id="treeActivity">
+
+    <h3>PHYLOGENETIC RECONSTRUCTION</h3>
+
+    <p class="tree-instructions">
+        Select the two viral samples that share the most recent common ancestor.
+    </p>
+
+    <div class="tree-display">
+
+        <div class="tree-root"></div>
+
+        <div class="tree-branch tree-branch-upper"></div>
+        <div class="tree-branch tree-branch-lower"></div>
+
+        <div class="tree-node" id="relationshipNode"></div>
+
+        <div class="sister-branch sister-upper"></div>
+        <div class="sister-branch sister-lower"></div>
+
+        <button
+            class="tree-sample sample-top"
+            data-sample="PIG-04">
+            PIG-04
+        </button>
+
+        <button
+            class="tree-sample sample-middle"
+            data-sample="HUM-07">
+            HUM-07
+        </button>
+
+        <button
+            class="tree-sample sample-bottom"
+            data-sample="BAT-01">
+            BAT-01
+        </button>
+
+    </div>
+
+    <div class="tree-status">
+        SELECTED RELATIONSHIP:
+        <span id="selectedPair">NONE</span>
+    </div>
+
+    <button id="checkTreeButton">
+        RUN PHYLOGENETIC ANALYSIS
+    </button>
+
+    <div id="analysisStatus">
+    <p id="treeResult"></p>
+    <button id="continueAnalysis">
+    CONTINUE INVESTIGATION
+</button>
+</div>
+
+</div>
+
+</div>
+
+<!-- DNA animation screen -->
+<div id="spilloverScreen" class="container">
+
+    <div class="analysis-header">
+        <p class="system-label">VIWR PATHOGEN DATABASE</p>
+
+        <h2>CROSS-SPECIES PATHOGEN ANALYSIS</h2>
+
+        <p class="analysis-subtitle">
+            Genetic relationship established. Preparing epidemiological reconstruction.
+        </p>
+    </div>
+
+    <div class="dna-analysis-display">
+
+        <div class="dna-visual">
+
+            <div class="scan-line"></div>
+
+            <div class="dna-helix">
+
+        <div class="dna-pair">
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="dna-pair">
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="dna-pair">
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="dna-pair">
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="dna-pair">
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="dna-pair">
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="dna-pair">
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="dna-pair">
+            <span></span>
+            <span></span>
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+        <p id="analysisMessage">
+            Loading viral relationship data...
+        </p>
+
+    <!-- HOST ANALYSIS RESULTS -->
+
+<div id="hostAnalysis">
+
+    <h3>CROSS-SPECIES ANALYSIS COMPLETE</h3>
+
+    <div class="host-display">
+
+        <div class="host-card">
+
+            <div class="host-icon bat-icon">BAT</div>
+
+            <p>BAT-01</p>
+
+            <span>RELATED VIRAL SAMPLE</span>
+
+        </div>
+
+        <div class="host-card closest-host">
+
+            <div class="host-icon pig-icon">PIG</div>
+
+            <p>PIG-04</p>
+
+            <span>CLOSEST RELATIONSHIP</span>
+
+        </div>
+
+        <div class="host-card closest-host">
+
+            <div class="host-icon human-icon">HUMAN</div>
+
+            <p>HUM-07</p>
+
+            <span>CLOSEST RELATIONSHIP</span>
+
+        </div>
+
+    </div>
+
+    <div class="relationship-result">
+
+        PIG-04 ↔ HUM-07
+
+        <br>
+
+        CLOSEST GENETIC RELATIONSHIP
+
+    </div>
+
+    <div class="analysis-warning">
+
+        CAUTION: GENETIC RELATEDNESS DOES NOT ESTABLISH
+
+        TRANSMISSION DIRECTION.
+
+        <br><br>
+
+        ADDITIONAL EPIDEMIOLOGICAL AND ENVIRONMENTAL
+
+        EVIDENCE REQUIRED.
+
+    </div>
+    
+<div id="reconstructionIntro">
+
+    <div class="secure-message-alert">
+        ● NEW SECURE MESSAGE RECEIVED
+    </div>
+
+    <div class="amara-message">
+
+        <p class="message-label">
+            SECURE VIWR COMMUNICATION
+        </p>
+
+        <p>
+            <strong>FROM: DR. AMARA REYES</strong>
+        </p>
+
+        <p>
+            Hello, scientists!
+        </p>
+
+        <p>
+            I knew you could do it. You've made it through the genetic
+            analysis, but we still have one final question to answer:
+            how did this virus spread?
+        </p>
+
+        <p>
+            Remember, finding closely related viral samples does not tell
+            us the direction of transmission. This is where all of the
+            other evidence I've given you becomes important.
+        </p>
+
+        <p>
+            Take a look back at everything you've uncovered throughout
+            the investigation and put the pieces together. Based on the
+            evidence I provided, reconstruct the sequence of events that
+            led to this outbreak.
+        </p>
+
+        <p>
+            We're close to understanding what really happened. I know
+            you can figure this out.
+        </p>
+
+        <p>
+            Good luck, and be careful. I don't think we're the only ones
+            watching this database.
+        </p>
+
+        <p>
+            — Dr. Amara Reyes
+        </p>
+
+        <button id="beginReconstruction">
+            BEGIN TRANSMISSION RECONSTRUCTION
+        </button>
+
+    </div>
+
+</div>
+</div>
+</div>  <!-- closes spilloverScreen -->
+
+
+<!-- SCREEN 5: TRANSMISSION RECONSTRUCTION -->
+
+<div class="container" id="reconstructionScreen">
+
+    <div class="reconstruction-header">
+
+        <p class="system-label">VIWR PATHOGEN DATABASE</p>
+
+        <h2>TRANSMISSION PATHWAY RECONSTRUCTION</h2>
+
+        <p>
+            Select the events in the order you believe they occurred.
+            Use the evidence provided by Dr. Reyes throughout the investigation.
+        </p>
+
+    </div>
+
+    <div id="reconstructionTimer"> 05:00
+        </div>
+
+    <div id="interferenceWarning">
+
+        <h3> WARNING: EXTERNAL CONNECTION DETECTED</h3>
+
+        <p>
+            UNAUTHORIZED REMOTE ACCESS IN PROGRESS
+        </p>
+
+        <div class="government-message">
+
+            <p>INCOMING EXTERNAL MESSAGE</p>
+
+            <p>
+                We warned you all not to proceed with this investigation.
+                We know what you are doing, and we will not allow you to continue.
+            </p>
+
+            <p>
+                — VESPERA OFFICE OF NATIONAL SECURITY
+            </p>
+
+        </div>
+
+    </div>
+
+    <div id="eventSelection">
+
+        <h3>RECONSTRUCT THE TRANSMISSION PATHWAY</h3>
+
+        <p>
+            SELECT EVENTS IN CHRONOLOGICAL ORDER
+        </p>
+
+        <div class="event-list">
+
+            <button class="event-card" data-event="human-exposure">
+                HUMAN EXPOSURE TO INFECTED PIGS
+            </button>
+
+            <button class="event-card" data-event="habitat-destruction">
+                AI DATA CENTER CONSTRUCTION
+            </button>
+
+            <button class="event-card" data-event="pig-infection">
+                PIG INFECTION
+            </button>
+
+            <button class="event-card" data-event="human-outbreak">
+                HUMAN OUTBREAK
+            </button>
+
+            <button class="event-card" data-event="bat-foraging">
+                BATS BEGIN FORAGING AT PIG FARM
+            </button>
+
+            <button class="event-card" data-event="bat-displacement">
+                BAT COLONY DISPLACED
+            </button>
+
+        </div>
+
+        <div id="reconstructionStatus">
+            SELECTED EVENTS: 0 / 6
+        </div>
+
+        <button id="resetReconstruction">
+            RESET RECONSTRUCTION
+        </button>
+
+        <button id="submitReconstruction">
+            SUBMIT TRANSMISSION PATHWAY
+        </button>
+
+        <p id="reconstructionResult"></p>
+
+    </div>
+
+</div>
+
+<!-- SCREEN 6: TRANSMISSION CONFIRMED -->
+
+<div id="transmissionCompleteScreen">
+
+    <div class="transmission-complete-box">
+
+        <p class="complete-label">
+            VIWR TRANSMISSION ANALYSIS
+        </p>
+
+        <h2>TRANSMISSION PATHWAY RESOLVED</h2>
+
+        <p>
+            The available evidence supports the following
+            transmission pathway:
+        </p>
+
+        <div class="confirmed-pathway">
+
+            AI DATA CENTER CONSTRUCTION
+            <br>↓<br>
+
+            BAT COLONY DISPLACED
+            <br>↓<br>
+
+            BATS BEGIN FORAGING AT PIG FARM
+            <br>↓<br>
+
+            PIG INFECTION
+            <br>↓<br>
+
+            HUMAN EXPOSURE TO INFECTED PIGS
+            <br>↓<br>
+
+            HUMAN OUTBREAK
+
+        </div>
+
+        <p class="final-instruction">
+            Transmission reconstruction has been successfully completed!
+            It is now time to submit your response and
+            recommendations to the Vespera government.
+            Great Work, and thank you for your contributions to this investigation.
+        </p>
+
+    </div>
+
+</div>
+
+
+    <!-- JAVASCRIPT CONNECTION -->
+<script src="script.js"></script>
+
+</body>
+</html>
+
