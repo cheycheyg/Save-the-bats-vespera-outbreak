@@ -54,6 +54,9 @@ const reconstructionTimer =
     document.getElementById("reconstructionTimer");
 let reconstructionTime = 300;
 let reconstructionInterval;
+const timeoutScreen = document.getElementById("timeoutScreen");
+const restoreSession = document.getElementById("restoreSession");
+
 const interferenceWarning = document.getElementById("interferenceWarning");
 const transmissionCompleteScreen = document.getElementById("transmissionCompleteScreen");
 const correctTransmissionOrder = [
@@ -452,11 +455,20 @@ function startReconstructionTimer() {
             clearInterval(reconstructionInterval);
 
             reconstructionTimer.textContent = "00:00";
+             timeoutScreen.style.display = "flex";
 
         }
 
     }, 1000);
 }
+
+restoreSession.addEventListener("click", function() {
+
+    timeoutScreen.style.display = "none";
+
+    startReconstructionTimer();
+
+});
 beginReconstruction.addEventListener("click", function() {
 
     spilloverScreen.style.display = "none";
